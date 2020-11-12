@@ -1,4 +1,4 @@
-Traversy Media - React JS Crash Course
+#Traversy Media - React JS Crash Course
 
 
 # Getting Started with Create React App
