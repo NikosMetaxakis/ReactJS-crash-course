@@ -1,13 +1,18 @@
+import TodoItem from './TodoItem';
+import PropTypes from 'prop-types';
+
 function Todos(props) {
-    return props.todos.map((todo) => (
-        <h3>{ todo.title }</h3>
-    ))
     
-    /* (
-      <div>
-        <h1>Todos</h1>
-      </div>
-    ); */
-  }
-  
-  export default Todos;
+
+    return props.todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} 
+        markComplete={props.markComplete}/>
+    ))
+}
+ 
+//PropTypes
+Todos.propTypes = {
+    todos: PropTypes.array.isRequired
+}
+
+export default Todos;
