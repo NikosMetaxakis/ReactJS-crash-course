@@ -4,7 +4,10 @@ import Todos from "./components/Todos"
 import AddTodo from "./components/AddTodo"
 import ConsoleLog from "./components/ConsoleLog"
 import { Component } from 'react';
+import React from 'react';
 import v4 from "../node_modules/uuid/dist/esm-browser/v4";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import About from './components/pages/About';
 
 class App extends Component {
   
@@ -56,16 +59,24 @@ class App extends Component {
   
   render(){
     return (
-      <div className="App">
-        <div className="container">
-          <Header />
-          <AddTodo addTodo={this.addTodo} />
-          <Todos 
-            todos={this.state.todos} 
-            markComplete={this.markComplete}
-            delTodo={this.delTodo}/>
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header />
+            <Route exact path="/" render={props => (
+              <React.Fragment>
+                <AddTodo addTodo={this.addTodo} />
+                <Todos 
+                  todos={this.state.todos} 
+                  markComplete={this.markComplete}
+                  delTodo={this.delTodo}/>
+              </React.Fragment>
+            )} />
+            <Route path="/about" component={About} />
+            
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
   
